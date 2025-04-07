@@ -1,0 +1,11 @@
+{
+    "development":{
+        "username":"desarrollo",
+        "password":"desarrollo",
+        "database": "database_decibelio",
+        "host":"db",
+        "dialect":"mysql",
+        "operatorAliases":false
+    }
+
+}
