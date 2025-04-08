@@ -33,12 +33,18 @@ class MetricController {
     // GET: Listar todos los registros
     async listar(req, res) {
         try {
-            const lista = await Metric.findAll();
+            const lista = await Metric.findAll({
+                order: [
+                    ['date', 'DESC'],
+                    ['time', 'DESC']
+                ]
+            });
             return res.status(200).json({ msg: "OK!", code: 200, info: lista });
         } catch (error) {
             return res.status(500).json({ msg: "Error al listar", code: 500, error: error.message });
         }
     }
+
 }
 
 module.exports = MetricController;

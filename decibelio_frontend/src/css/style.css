@@ -1,0 +1,25 @@
+:root {
+  /* Paleta de colores */
+  --color-primario: #ffffff;
+  --azul-oscuro: #182b5c;
+  --azul-intermedio: #289db9;
+}
+
+.bg-azul-oscuro {
+  background-color: var(--azul-oscuro) !important;
+}
+
+.azul-oscuro {
+  color: var(--azul-oscuro) !important;
+}
+
+.texto-blanco {
+  color: white !important;
+}
+.table-hover tbody tr:hover {
+  background-color: var(--azul-intermedio);
+  color: white;
+}
+.table-dark{
+  --bs-table-bg: var(--azul-oscuro) !important;
+}
