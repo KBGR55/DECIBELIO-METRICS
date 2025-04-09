@@ -33,7 +33,12 @@ module.exports = (sequelize, DataTypes) => {
         sensorExternalId: {
             type: DataTypes.STRING,
             allowNull: true
-        }
+        },
+        read:{
+            type: DataTypes.BOOLEAN,
+            allowNull:true,
+            defaultValue: false,
+        }, 
     }, {
         freezeTableName: true,
     });

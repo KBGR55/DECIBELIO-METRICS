@@ -2,6 +2,7 @@ version: '3.8'
 
 services:
   backend:
+    restart: unless-stopped
     build:
       context: ./decibelio_backend
       dockerfile: Dockerfile
@@ -21,6 +22,7 @@ services:
       - backend_data:/usr/src/app/storage
 
   frontend:
+    restart: unless-stopped
     build:
       context: ./decibelio_frontend
       dockerfile: Dockerfile
@@ -33,6 +35,7 @@ services:
 
   db:
     image: mysql:latest
+    restart: unless-stopped
     environment:
       MYSQL_DATABASE: database_decibelio
       MYSQL_USER: desarrollo
@@ -40,6 +43,20 @@ services:
       MYSQL_ROOT_PASSWORD: root
     volumes:
       - db_data:/var/lib/mysql
+    networks:
+      - app-network
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: db
+      PMA_USER: root
+      PMA_PASSWORD: root
+    depends_on:
+      - db
     networks:
       - app-network
 

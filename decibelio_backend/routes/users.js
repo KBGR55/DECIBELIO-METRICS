@@ -16,8 +16,11 @@ const metricValidation = [
 ];
 
 // Rutas
-router.post('/metric', metricValidation, (req, res) => controller.guardar(req, res));
-router.get('/metric', (req, res) => controller.listar(req, res));
+router.post('/metric', metricValidation, (req, res) => controller.keep(req, res));
+router.get('/metric', (req, res) => controller.list(req, res));
+router.get('/metric/paginated', (req, res) => controller.list_paging(req, res));
+router.put('/metric/unread', (req, res) => controller.read_and_mark(req, res));
+
 
 
 module.exports = router;  
