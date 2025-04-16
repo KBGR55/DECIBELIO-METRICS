@@ -21,18 +21,6 @@ services:
     volumes:
       - backend_data:/usr/src/app/storage
 
-  frontend:
-    restart: unless-stopped
-    build:
-      context: ./decibelio_frontend
-      dockerfile: Dockerfile
-    ports:
-      - "80:3000"
-    depends_on:
-      - backend
-    networks:
-      - app-network
-
   db:
     image: mysql:latest
     restart: unless-stopped
