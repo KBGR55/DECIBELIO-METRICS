@@ -45,6 +45,19 @@ services:
     networks:
       - app-network
 
+  mosquitto:
+    image: eclipse-mosquitto:latest
+    restart: unless-stopped
+    container_name: mosquitto
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    volumes:
+      - ./mosquitto:/mosquitto/config
+    networks:
+      - app-network
+
+
 networks:
   app-network:
     driver: bridge
@@ -52,3 +65,5 @@ networks:
 volumes:
   db_data:
   backend_data:
+  mosquitto_data:
+  mosquitto_config:
